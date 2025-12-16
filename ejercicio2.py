@@ -66,6 +66,21 @@ class Biblioteca:
         print(f"No se encontro el libro '{titulo}'.")
 
 
+def crear_libro_fisico():
+    titulo = input("Titulo del libro: ")
+    autor = input("Autor: ")
+    anio = int(input("Año: "))
+    return Libro(titulo, autor, anio)
+
+def crear_libro_digital():
+    titulo = input("Titulo del libro digital: ")
+    autor = input("Autor: ")
+    anio = int(input("Año: "))
+    formato = input("Formato (PDF, EPUB, etc.): ")
+    tamanioMB = int(input("Tamaño en MB: "))
+    return LibroDigital(titulo, autor, anio, formato, tamanioMB)
+
+
 b = Biblioteca()
 
 b.agregar_libro(Libro("La Iliada", "Homero", 1500))
@@ -78,17 +93,19 @@ while True:
     print("\nMenu:")
     print("1. Agregar libro fisico")
     print("2. Agregar libro virtual")
-    print("2. Mostrar libros")
-    print("3. Prestar Libro")
-    print("4. Buscar por autor")
+    print("3. Mostrar libros")
+    print("4. Prestar Libro")
+    print("5. Buscar por autor")
     print("6. Salir")
 
     opcion = input("Opcion: ")
 
     if opcion == "1":
-        b.agregar_libro()
+        libro = crear_libro_fisico()
+        b.agregar_libro(libro)
     elif opcion == "2":
-        b.agregar_libro()
+        libro = crear_libro_digital()
+        b.agregar_libro(libro)
     elif opcion == "3":
         b.listar_libros()
     elif opcion == "4":
